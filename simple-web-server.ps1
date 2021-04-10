@@ -8,9 +8,7 @@ while ($http.IsListening) {
 
     if ($context.Request.HttpMethod -eq 'GET') {
 	    $rq_path=$context.Request.Url.AbsolutePath.Replace("/","\") 
-	    write-host "$($rq_path)" -f 'mag'
 	    $curr_dir=[System.Environment]::CurrentDirectory
-	    write-host "$($curr_dir)" -f 'mag'
 	    write-host "$($curr_dir + $rq_path)" -f 'mag'
 	    $buffer=[System.IO.File]::ReadAllBytes($curr_dir + $rq_path) 
 	    $context.Response.ContentLength64 = $buffer.Length
